@@ -2,6 +2,13 @@ import React from "react";
 import HeroImage from "../../assets/images/hero-textile.jpg"; // Import the local image
 
 const HeroSection = () => {
+  const handleScroll = () => {
+    const productSection = document.getElementById("product-list");
+    if (productSection) {
+      productSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       className="hero bg-cover bg-center h-screen text-white p-10 flex flex-col justify-center items-center"
@@ -17,7 +24,10 @@ const HeroSection = () => {
           Explore high-quality fabrics, designed for every occasion.
         </p>
         <div className="flex justify-center">
-          <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full transition duration-300 transform hover:scale-105 focus:outline-none">
+          <button
+            className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full transition duration-300 transform hover:scale-105 focus:outline-none"
+            onClick={handleScroll} // Call the scroll function on click
+          >
             Explore Products
           </button>
         </div>
