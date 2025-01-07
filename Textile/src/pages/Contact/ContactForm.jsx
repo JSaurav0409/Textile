@@ -1,45 +1,79 @@
 import React, { useState } from "react";
 
-const ContactForm = () => {
+const ContactForm = ({ onSubmit, onLoading }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "", // Added phone field
     message: "",
   });
 
-  // Handle form data changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
-  const onSubmit = async (event) => {
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    const regex = /^[0-9]{10}$/; // Simple validation for 10-digit phone number
+    return regex.test(phone);
+  };
+
+  const onSubmitForm = async (event) => {
     event.preventDefault();
+
+    // Validate form fields
+    if (!formData.name || !formData.email || !formData.message) {
+      onSubmit("All fields are required.", "error");
+      return;
+    }
+
+    if (!validateEmail(formData.email)) {
+      onSubmit("Please enter a valid email address.", "error");
+      return;
+    }
+
+    if (formData.phone && !validatePhone(formData.phone)) {
+      onSubmit("Please enter a valid phone number.", "error");
+      return;
+    }
+
+    onLoading(true); // Start loading
+    onSubmit("", ""); // Reset status messages
 
     const formDataToSubmit = {
       ...formData,
       access_key: "2d25fac2-634b-4f92-af7e-1340431c6c7d",
     };
 
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(formDataToSubmit),
-    }).then((res) => res.json());
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formDataToSubmit),
+      }).then((res) => res.json());
 
-    if (res.success) {
-      console.log("Success", res);
-      setFormData({ name: "", email: "", message: "" }); // Clear fields on success
-    } else {
-      console.log("Error", res);
+      if (res.success) {
+        onSubmit("Your message has been sent successfully!", "success");
+        setFormData({ name: "", email: "", phone: "", message: "" }); // Clear fields
+      } else {
+        onSubmit("There was an error submitting your message.", "error");
+      }
+    } catch (error) {
+      onSubmit("Something went wrong, please try again.", "error");
+    } finally {
+      onLoading(false); // Stop loading
     }
   };
 
   return (
-    <form onSubmit={onSubmit} className="space-y-6">
+    <form onSubmit={onSubmitForm} className="space-y-6">
       {/* Name Field */}
       <div className="flex flex-col">
         <label htmlFor="name" className="text-lg font-semibold text-gray-800">
@@ -71,6 +105,22 @@ const ContactForm = () => {
           className="border-2 border-gray-300 p-3 rounded-lg mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Enter your email"
           required
+        />
+      </div>
+
+      {/* Phone Field */}
+      <div className="flex flex-col">
+        <label htmlFor="phone" className="text-lg font-semibold text-gray-800">
+          Phone:
+        </label>
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          className="border-2 border-gray-300 p-3 rounded-lg mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter your phone number"
         />
       </div>
 
