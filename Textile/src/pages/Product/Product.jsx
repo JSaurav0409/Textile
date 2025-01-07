@@ -33,7 +33,7 @@ const Products = () => {
   return (
     <div className="products p-10 bg-gray-100">
       <h1
-        className="text-3xl font-bold text-center mb-20 underline"
+        className="text-3xl font-bold text-center mb-20"
         data-aos="fade-up" // AOS fade-up animation for header
       >
         Our Products

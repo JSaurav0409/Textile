@@ -21,7 +21,7 @@ const About = () => {
         className="intro p-20 mt-4 bg-gray-50"
         data-aos="fade-up" // AOS animation type
       >
-        <h1 className="text-4xl font-bold text-center underline text-primary">
+        <h1 className="text-4xl font-bold text-center text-primary">
           About Our Company
         </h1>
         <p className="mt-4 text-left pt-5 text-xl text-gray-700">

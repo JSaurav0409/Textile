@@ -56,7 +56,7 @@ const ProductList = () => {
   return (
     <section id="product-list" className="product-list p-10 bg-gray-50">
       <h2
-        className="text-2xl font-bold mb-6 text-center underline"
+        className="text-4xl font-bold mb-6 text-center"
         data-aos="fade-up" // Animation for the header
       >
         Our Products

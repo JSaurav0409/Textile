@@ -19,7 +19,7 @@ const CompanyHistory = () => {
     <section className="company-history p-10 bg-gradient-to-r from-gray-100 to-white">
       {/* Section Header */}
       <h2
-        className="text-4xl underline font-bold text-center text-primary mb-10"
+        className="text-4xl font-bold text-center text-primary mb-20"
         data-aos="fade-up" // Adding fade-up animation on scroll
       >
         Our History

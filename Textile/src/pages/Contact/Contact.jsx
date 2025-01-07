@@ -29,10 +29,12 @@ const Contact = () => {
     <div className="contact p-10 bg-gradient-to-r from-blue-50 to-green-50 min-h-screen">
       {/* Contact Section Header */}
       <div className="text-center m-12" data-aos="fade-up">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-8 underline">
+          Contact Us
+        </h1>
         <p className="text-lg text-gray-600">
           We’d love to hear from you! Reach out to us with your questions or
-          feedback.
+          feedback. ❤️
         </p>
       </div>
 
@@ -65,8 +67,8 @@ const Contact = () => {
           </div>
         )}
 
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
-          Get in Touch
+        <h2 className="text-2xl font-semibold text-gray-800 mb-8 text-center">
+          Get in Touch ✌️
         </h2>
         <ContactForm
           onSubmit={handleFormSubmit}
