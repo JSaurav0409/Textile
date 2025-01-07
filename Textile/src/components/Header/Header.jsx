@@ -1,13 +1,44 @@
-import React from "react";
-import { NavLink } from "react-router-dom"; // Import NavLink
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false); // State to toggle the mobile menu
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen); // Toggle the menu open/closed
+  };
+
   return (
     <header className="bg-gray-200 text-black p-4 shadow-md sticky top-0 z-10">
       <div className="container mx-auto flex justify-between items-center">
+        {/* Logo */}
         <h1 className="text-2xl font-bold text-primary">Textile Company</h1>
-        <nav>
-          <ul className="flex space-x-6 text-lg">
+
+        {/* Hamburger Icon (Visible on mobile only) */}
+        <button
+          onClick={toggleMenu}
+          className="lg:hidden flex flex-col justify-center items-center space-y-2"
+        >
+          <div
+            className={`w-6 h-0.5 bg-black transition-all duration-300 ${
+              isOpen ? "rotate-45 translate-y-2" : ""
+            }`}
+          ></div>
+          <div
+            className={`w-6 h-0.5 bg-black transition-all duration-300 ${
+              isOpen ? "opacity-0" : ""
+            }`}
+          ></div>
+          <div
+            className={`w-6 h-0.5 bg-black transition-all duration-300 ${
+              isOpen ? "-rotate-45 -translate-y-2" : ""
+            }`}
+          ></div>
+        </button>
+
+        {/* Navigation */}
+        <nav className={`lg:flex ${isOpen ? "block" : "hidden"} lg:block`}>
+          <ul className="flex lg:flex-row flex-col lg:space-x-6 space-y-4 lg:space-y-0 text-lg">
             <li>
               <NavLink
                 to="/"
