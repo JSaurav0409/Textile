@@ -10,7 +10,7 @@ const HeroSection = () => {
     AOS.init({
       duration: 1000, // Animation duration in milliseconds
       easing: "ease-in-out", // Animation easing
-      once: true, // Animation happens only once while scrolling down
+      once: false, // Animation happens only once while scrolling down
     });
   }, []);
 

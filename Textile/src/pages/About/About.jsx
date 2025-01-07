@@ -5,12 +5,13 @@ import Team from "../About/Team";
 import CompanyHistory from "../About/CompanyHistory";
 
 const About = () => {
+  // Initialize AOS on component mount
   useEffect(() => {
     AOS.init({
       duration: 1000, // Animation duration in milliseconds
       easing: "ease-in-out", // Animation easing
-      once: false, // Allow animations to trigger on both downward and upward scrolling
-      offset: 100, // Trigger animation a bit earlier as you approach the section
+      once: false, // Animation happens on both down and up scroll
+      mirror: true, // Ensures that the animation triggers again when scrolling back up
     });
   }, []);
 
