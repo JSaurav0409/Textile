@@ -7,17 +7,39 @@ const ContactForm = () => {
     message: "",
   });
 
+  // Handle form data changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic
+  // Handle form submission
+  const onSubmit = async (event) => {
+    event.preventDefault();
+
+    const formDataToSubmit = {
+      ...formData,
+      access_key: "2d25fac2-634b-4f92-af7e-1340431c6c7d",
+    };
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(formDataToSubmit),
+    }).then((res) => res.json());
+
+    if (res.success) {
+      console.log("Success", res);
+      setFormData({ name: "", email: "", message: "" }); // Clear fields on success
+    } else {
+      console.log("Error", res);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={onSubmit} className="space-y-6">
       {/* Name Field */}
       <div className="flex flex-col">
         <label htmlFor="name" className="text-lg font-semibold text-gray-800">
