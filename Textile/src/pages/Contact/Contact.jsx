@@ -55,7 +55,7 @@ const Contact = () => {
       >
         {/* Loading Spinner Overlay */}
         {loading && (
-          <div className="absolute inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-10">
+          <div className="absolute inset-0 bg-opacity-50 flex justify-center items-center z-10">
             <div className="relative flex items-center justify-center">
               <div className="absolute w-32 h-32 border-t-4 border-blue-500 rounded-full animate-spin"></div>
               <span className="absolute text-blue-500 font-semibold text-xl">
