@@ -1,12 +1,44 @@
-import React from "react";
-import Team from '../About/Team';
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Team from "../About/Team";
 import CompanyHistory from "../About/CompanyHistory";
 
 const About = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in milliseconds
+      easing: "ease-in-out", // Animation easing
+      once: false, // Allow animations to trigger on both downward and upward scrolling
+      offset: 100, // Trigger animation a bit earlier as you approach the section
+    });
+  }, []);
+
   return (
-    <div>
-      <Team />
+    <div className="about-page">
+      <section
+        className="intro p-20 mt-4 bg-gray-50"
+        data-aos="fade-up" // AOS animation type
+      >
+        <h1 className="text-4xl font-bold text-center underline text-primary">
+          About Our Company
+        </h1>
+        <p className="mt-4 text-left pt-5 text-xl text-gray-700">
+          We are a leading textile company offering high-quality fabrics for
+          every need. Over the last two decades, we have established ourselves
+          as a trusted name in the industry, known for innovation,
+          craftsmanship, and sustainability. Starting as a small workshop in
+          2000, we have grown into a global brand with a commitment to
+          excellence and customer satisfaction. Our dedication to using
+          eco-friendly materials and cutting-edge technology has set us apart,
+          enabling us to deliver products that inspire creativity and meet the
+          diverse demands of our clients worldwide. At the heart of our success
+          is our unwavering focus on quality, passion for innovation, and drive
+          to make a lasting impact in the world of textiles.
+        </p>
+      </section>
       <CompanyHistory />
+      <Team />
     </div>
   );
 };
