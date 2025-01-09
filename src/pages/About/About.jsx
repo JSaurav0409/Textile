@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Team from "../About/Team";
-import CompanyHistory from "../About/CompanyHistory";
+import Team from "./Team";
+import CompanyHistory from "./CompanyHistory";
 
 const About = () => {
   // Initialize AOS on component mount
