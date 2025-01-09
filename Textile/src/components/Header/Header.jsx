@@ -17,7 +17,7 @@ const Header = () => {
         {/* Hamburger Icon (Visible on mobile only) */}
         <button
           onClick={toggleMenu}
-          className="lg:hidden flex flex-col justify-center items-center space-y-2"
+          className="lg:hidden flex flex-col justify-center items-center space-y-1.5"
         >
           <div
             className={`w-6 h-0.5 bg-black transition-all duration-300 ${
@@ -37,8 +37,12 @@ const Header = () => {
         </button>
 
         {/* Navigation */}
-        <nav className={`lg:flex ${isOpen ? "block" : "hidden"} lg:block`}>
-          <ul className="flex lg:flex-row flex-col lg:space-x-6 space-y-4 lg:space-y-0 text-lg">
+        <nav
+          className={`lg:flex ${
+            isOpen ? "block" : "hidden"
+          } lg:block absolute lg:static bg-gray-200 w-full lg:w-auto top-full left-0`}
+        >
+          <ul className="flex lg:flex-row flex-col lg:space-x-6 space-y-4 lg:space-y-0 text-lg px-4 py-4 lg:p-0">
             <li>
               <NavLink
                 to="/"
