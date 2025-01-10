@@ -1,6 +1,5 @@
 {
   "name": "textile",
-  "homepage": "https://JSaurav0409.github.io/TextileDemo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,14 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "aos": "^2.3.4",
     "emailjs-com": "^3.2.0",
-    "gh-pages": "^6.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.1"
