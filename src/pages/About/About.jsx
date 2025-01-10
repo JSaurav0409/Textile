@@ -24,7 +24,7 @@ const About = () => {
         <h1 className="text-4xl font-bold text-center text-primary">
           About Our Company
         </h1>
-        <p className="mt-4 text-left pt-5 text-xl text-gray-700">
+        <p className="mt-4 text-justify pt-5 text-xl text-gray-700">
           We are a leading textile company offering high-quality fabrics for
           every need. Over the last two decades, we have established ourselves
           as a trusted name in the industry, known for innovation,
