@@ -101,10 +101,19 @@ const CompanyHistory = () => {
               onClick={() => handleEventClick(index)}
             >
               <div className="flex items-center mb-4">
-                <div className="timeline-dot w-10 sm:w-12 h-10 sm:h-12 bg-blue-500 text-white rounded-full flex justify-center items-center font-semibold sm:text-lg transition-all duration-300 ease-in-out transform hover:scale-110">
+                <div
+                  className={`timeline-dot w-10 sm:w-12 h-10 sm:h-12 bg-blue-500 text-white rounded-full flex justify-center items-center font-semibold sm:text-lg transition-all duration-300 ease-in-out transform hover:scale-110 ${
+                    selectedEvent === index
+                      ? "bg-green-500 shadow-lg"
+                      : "hover:bg-blue-700"
+                  }`}
+                  style={{
+                    border: "2px solid #fff", // Adding white border like a shirt button
+                  }}
+                >
                   {event.year}
                 </div>
-                <p className="text-base sm:text-lg text-center ml-4 sm:ml-6">
+                <p className="font-bold sm:text-lg text-center ml-4 sm:ml-6">
                   {event.title}
                 </p>
               </div>
